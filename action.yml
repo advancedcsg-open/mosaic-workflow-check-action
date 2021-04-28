@@ -1,0 +1,20 @@
+name: 'Workflow Check'
+description: 'Checks the last execution of a workflow for statuses and conclusions.'
+inputs:
+  workflow:
+    description: 'The ID of the workflow. You can also pass the workflow file name as a string.'
+    required: true
+  passing-statuses:
+    description: 'A list of workflow statuses (comma separated) that will pass this action, if not provided, the action will succeed. If provided, both passing conditions need to be fulfilled. Can be one of: “queued”, “in_progress”, or “completed”.'
+    required: false
+  passing-conclusions:
+    description: 'A list of workflow conclusions (comma separated) that will pass this action, if not provided, the action will succeed. If provided, both passing conditions need to be fulfilled. Can be one of the “success”, “failure”, “neutral”, “cancelled”, “skipped”, “timed_out”, or “action_required”.'
+    required: false
+outputs:
+  conclusion:
+    description: 'Can be one of the “success”, “failure”, “neutral”, “cancelled”, “skipped”, “timed_out”, or “action_required”.'
+  status:
+    description: 'Can be one of: “queued”, “in_progress”, or “completed”.'
+runs:
+  using: 'node12'
+  main: 'dist/index.js'
