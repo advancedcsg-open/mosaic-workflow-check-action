@@ -17,9 +17,7 @@ try {
         per_page: 1
     });
     workflowRuns.then((response => {
-        console.log(response)
         let data = response['data']
-        console.log(`total count: ${data["total_count"]}`)
         if (data['total_count'] > 0) {
             let workflowRun = data['workflow_runs'][0]
             let workflowConclusion = workflowRun['conclusion']
